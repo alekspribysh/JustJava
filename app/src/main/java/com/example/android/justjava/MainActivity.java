@@ -22,31 +22,39 @@ public class MainActivity extends ActionBarActivity {
      */
 
     private int quantity = 0;
-    public void submitOrder(View view) {
 
-        displayPrice(quantity * 5);
+    public void submitOrder(View view) {
+        int price = quantity *5;
+
+        String message = "Total $ " + price;
+        message = message +"\nThank you!!!";
+
+        displayPrice(message);
     }
 
-    public void plusCup(View view){
-        quantity = quantity+1;
+
+    public void plusCup(View view) {
+        quantity = quantity + 1;
         display(quantity);
     }
-    public void minusCup(View view){
-        if(quantity > 0){
-        quantity = quantity-1;
-            display(quantity);}
-        else {
+
+    public void minusCup(View view) {
+        if (quantity > 0) {
+            quantity = quantity - 1;
+            display(quantity);
+        } else {
             display(quantity);
         }
 
     }
 
 
-    private void displayPrice(int number){
+    private void displayPrice(String message) {
         TextView priceTextView = (TextView) findViewById(
                 R.id.price_text_view
         );
-        priceTextView.setText("$ "+number);
+        priceTextView.setText (message);
+
     }
 
     /**
@@ -57,4 +65,6 @@ public class MainActivity extends ActionBarActivity {
                 R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
+
+
 }
